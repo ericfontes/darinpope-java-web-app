@@ -29,11 +29,21 @@ pipeline {
               sh 'docker compose ps'
 	       }
 	  }
+
+         stage('SonarCloud'){
+           steps{
+             withSonarQubeEnv('sonarcloud') {
+               sh "./mvnw org.jacoco:jacoco-maven-plugin:prepare-agent verify \
+               sonar:sonar -Dsonar.branch.name=${env.BRANCH_NAME}"
+                }
+          }
+    }	
 	  
 	  stage('Deploy approval'){
 	    input "Deploy to prod?"
 	       }
 
+/**
 	  stage('Deploy') {
 	    
 	    steps {
@@ -43,15 +53,6 @@ pipeline {
 	      sh 'docker compose ps --format json'
 	      }
 	  }
-/**
-	 stage('SonarCloud'){
-	   steps{
-	     withSonarQubeEnv('sonarcloud') {
-               sh "./mvnw org.jacoco:jacoco-maven-plugin:prepare-agent verify \
-               sonar:sonar -Dsonar.branch.name=${env.BRANCH_NAME}"
-                }
-	     }
-	 }
 **/
      }
  }
