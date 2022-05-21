@@ -34,7 +34,7 @@ pipeline {
 	    steps {
             
                withSonarQubeEnv(installationName: 'sq1') { 
-                   sh 'mvn clean verify sonar:sonar -Dsonar.login=myAuthenticationToken'
+                   sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.4.0.905:sonar'
                 }
           }
     }
