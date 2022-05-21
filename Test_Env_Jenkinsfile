@@ -1,5 +1,5 @@
 pipeline {
-
+def scannerHome = tool 'SonarScanner 4.0';
 	agent any
 
 	environment {
@@ -33,8 +33,7 @@ pipeline {
          stage('SonarCloud') {
 	    steps {
             
-               withSonarQubeEnv('SonarCloud') {
-                 def scannerHome = tool 'SonarScanner 4.0'; 
+               withSonarQubeEnv('SonarCloud') { 
                  sh "${scannerHome}/bin/sonar-scanner"
                 }
           }
