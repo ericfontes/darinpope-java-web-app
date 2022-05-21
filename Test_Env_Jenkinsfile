@@ -18,7 +18,7 @@ pipeline {
 		}
           }
 
-/**
+
 	  stage('Build') {
 
 	    steps {
@@ -29,10 +29,11 @@ pipeline {
               sh 'docker compose ps'
 	       }
 	  }
-**/
+
 	  stage('Deploy') {
 	    
 	    steps {
+              sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
 	      sh 'docker context use default'
 	      sh 'docker compose up'
 	      sh 'docker compose ps --format json'
