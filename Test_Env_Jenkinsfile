@@ -23,7 +23,7 @@ pipeline {
 	    steps {
 	      sh 'docker context use default'
 	      sh 'docker compose build'
-	      sh 'docker compose push ericfontes/java-web-app'
+	      sh 'docker compose push ericfontes/java-web-app:latest'
               sh 'docker compose ps'
 	       }
 	  }
