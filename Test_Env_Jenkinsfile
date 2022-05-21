@@ -40,7 +40,9 @@ pipeline {
     }	
 	  
 	  stage('Deploy approval'){
-	    input "Deploy to prod?"
+	    steps {
+              input(message: 'Press Aprove to deploy', ok: 'Aprove')
+    }
  }
 
 /**
