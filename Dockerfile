@@ -1,6 +1,9 @@
 FROM adoptopenjdk/openjdk11:alpine-slim as build
 WORKDIR /workspace/app
 
+ARG PORT
+ENV PORT ${PORT}
+
 COPY mvnw .
 COPY .mvn .mvn
 COPY pom.xml .

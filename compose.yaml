@@ -1,0 +1,7 @@
+services:
+  web:
+    image: ericfontes/java-web-app:latest
+    build:
+      context:
+    ports:
+      -"8080:8080"
