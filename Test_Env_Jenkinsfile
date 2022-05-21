@@ -31,9 +31,9 @@ pipeline {
 	  }
 
          stage('SonarCloud'){
-           steps{
-             withSonarQubeEnv(installationName: 'sonarcloud') {
-               sh "./mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar}"
+               def scannerHome = tool 'SonarScanner 4.0';
+               withSonarQubeEnv('SonarCloud') { // If you have configured more than one global server connection, you can specify its name
+                 sh "${scannerHome}/bin/sonar-scanner"
                 }
           }
     }	
