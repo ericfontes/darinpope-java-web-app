@@ -29,6 +29,10 @@ pipeline {
               sh 'docker compose ps'
 	       }
 	  }
+	  
+	  stage('Deploy approval'){
+	    input "Deploy to prod?"
+	       }
 
 	  stage('Deploy') {
 	    
