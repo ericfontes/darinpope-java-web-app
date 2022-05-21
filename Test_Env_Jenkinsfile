@@ -21,19 +21,19 @@ pipeline {
 	  stage('Build') {
 
 	    steps {
-	      sh 'docker context use default'
-	      sh 'docker compose build'
-	      sh 'docker compose push'
-              sh 'docker compose ps'
+	      sh 'sudo docker context use default'
+	      sh 'sudo docker compose build'
+	      sh 'sudo docker compose push'
+              sh 'sudo docker compose ps'
 	       }
 	  }
 
 	  stage('Deploy') {
 	    
 	    steps {
-	      sh 'docker context use default'
-	      sh 'docker compose up'
-	      sh 'docker compose ps --format json'
+	      sh 'sudo docker context use default'
+	      sh 'sudo docker compose up'
+	      sh 'sudo docker compose ps --format json'
 	      }
 	  }
 /**
