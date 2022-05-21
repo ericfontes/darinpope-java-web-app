@@ -1,0 +1,3 @@
+To delete everything - network, containers and images
+
+docker system prune -a --volumes
