@@ -34,8 +34,7 @@ pipeline {
 	    steps {
             
                withSonarQubeEnv(installationName: 'sq1') { 
-                   sh './mvnw org.jacoco:jacoco-maven-plugin:prepare-agent verify \
-               sonar:sonar -Dsonar.branch.name=${env.BRANCH_NAME}'
+                   sh 'mvn clean verify sonar:sonar -Dsonar.login=myAuthenticationToken'
                 }
           }
     }
