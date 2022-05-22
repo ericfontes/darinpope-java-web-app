@@ -45,7 +45,7 @@ pipeline {
     }
  }
 
-/**
+
 	  stage('Deploy') {
 	    
 	    steps {
@@ -55,6 +55,6 @@ pipeline {
 	      sh 'docker compose ps --format json'
 	      }
 	  }
-**/
+
      }
  }
